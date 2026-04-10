@@ -1,0 +1,56 @@
+[
+  {
+    "model": "Cafeteria.rol",
+    "pk": "ADM",
+    "fields": {
+      "nombre": "Administrador",
+      "descripcion": "Rol de administrador del sistema"
+    }
+  },
+  {
+    "model": "Cafeteria.rol",
+    "pk": "EMP",
+    "fields": {
+      "nombre": "Empleado",
+      "descripcion": "Rol de empleado de la cafetería"
+    }
+  },
+  {
+    "model": "Cafeteria.rol",
+    "pk": "CLI",
+    "fields": {
+      "nombre": "Cliente",
+      "descripcion": "Rol de cliente de la cafetería"
+    }
+  },
+  {
+    "model": "Cafeteria.usuario",
+    "pk": "001",
+    "fields": {
+      "nombre": "Admin User",
+      "correo": "admin@example.com",
+      "password": "admin123",
+      "cod_rol": "ADM"
+    }
+  },
+  {
+    "model": "Cafeteria.usuario",
+    "pk": "002",
+    "fields": {
+      "nombre": "Empleado User",
+      "correo": "empleado@example.com",
+      "password": "emp123",
+      "cod_rol": "EMP"
+    }
+  },
+  {
+    "model": "Cafeteria.usuario",
+    "pk": "003",
+    "fields": {
+      "nombre": "Cliente User",
+      "correo": "cliente@example.com",
+      "password": "cli123",
+      "cod_rol": "CLI"
+    }
+  }
+]

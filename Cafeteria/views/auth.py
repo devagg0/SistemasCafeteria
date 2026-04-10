@@ -8,7 +8,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Usuario
+from ..models import Usuario
 
 @csrf_exempt
 @api_view(['POST'])
@@ -18,9 +18,6 @@ def login_view(request):
         correo = data.get('username')
         password = data.get('password')
         user = Usuario.objects.get(correo=correo, password=password)
-        # Para JWT, necesitamos que Usuario sea compatible con User model.
-        # Como no lo es, podemos crear un token manualmente o usar un custom user.
-        # Para simplicidad, devolver tokens sin usar for_user.
         refresh = RefreshToken()
         refresh['user_id'] = user.cod_usuario
         refresh['user_name'] = user.nombre
@@ -42,7 +39,6 @@ def login_view(request):
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def home_view(request):
-    # Acceder a los claims del token
     token = request.auth
     if token:
         user_data = {
@@ -60,8 +56,4 @@ def home_view(request):
 @csrf_exempt
 @api_view(['POST'])
 def logout_view(request):
-    # Con JWT, logout es del lado cliente
     return Response({'message': 'Logged out successfully'})
-def logout_view(request):
-    request.session.flush()
-    return JsonResponse({'message': 'Logged out successfully'})
